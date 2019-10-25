@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+
+<!-- Carousel -->
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="/img/SnowTricks1.jpg" class="d-block w-100" alt="">
+        </div>
+        <div class="carousel-item">
+            <img src="/img/SnowTricks2.jpg" class="d-block w-100" alt="">
+        </div>
+        <div class="carousel-item">
+            <img src="/img/SnowTricks3.jpg" class="d-block w-100" alt="">
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+{% endblock %}
+
+
+{% block body %}
+
+<div class="row">
+
+<section class="tricks d-flex flex-row flex-wrap">
+
+    <article class="col-md-4 mb-sm-5">
+    <h2>title trick</h2>
+    <div class="metadata">Ecrit le dans la catégorie tricks</div>
+    <div class="content">
+        <img class="w-50" src="https://coresites-cdn.factorymedia.com/cooler_new/wp-content/uploads/2014/05/article-0-1B3E330300000578-449_634x496.jpg" alt="">
+       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras felis neque, gravida id nisl in, fermentum varius dolor. Donec sit amet leo ut erat pulvinar tristique. In elit odio, sodales vitae pretium a, porttitor nec massa. Suspendisse consequat sed lectus vel posuere. Sed tempus cursus turpis, efficitur iaculis lorem cursus auctor. Nulla vel risus a lacus rhoncus pulvinar. Aliquam erat volutpat. Vestibulum velit enim, placerat eget elit viverra, dapibus ultrices mi. Etiam gravida pretium luctus. Integer nec tincidunt mi. Integer volutpat efficitur placerat. Aenean vulputate mi sed neque gravida ullamcorper. Nullam laoreet ligula at sodales porttitor.</p>
+        <a href="{{ path('trick_show') }}" class="btn btn-primary">lire la suite</a>
+    </div>
+</article>
+
+<article class="col-md-4 mb-sm-5">
+    <h2>title trick</h2>
+    <div class="metadata">Ecrit le dans la catégorie tricks</div>
+    <div class="content">
+        <img class="w-50" src="https://coresites-cdn.factorymedia.com/cooler_new/wp-content/uploads/2014/05/article-0-1B3E330300000578-449_634x496.jpg" alt="">
+       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras felis neque, gravida id nisl in, fermentum varius dolor. Donec sit amet leo ut erat pulvinar tristique. In elit odio, sodales vitae pretium a, porttitor nec massa. Suspendisse consequat sed lectus vel posuere. Sed tempus cursus turpis, efficitur iaculis lorem cursus auctor. Nulla vel risus a lacus rhoncus pulvinar. Aliquam erat volutpat. Vestibulum velit enim, placerat eget elit viverra, dapibus ultrices mi. Etiam gravida pretium luctus. Integer nec tincidunt mi. Integer volutpat efficitur placerat. Aenean vulputate mi sed neque gravida ullamcorper. Nullam laoreet ligula at sodales porttitor.</p>
+        <a href="{{ path('trick_show') }}" class="btn btn-primary">lire la suite</a>
+    </div>
+</article>
+
+<article class="col-md-4 mb-sm-5">
+    <h2>title trick</h2>
+    <div class="metadata">Ecrit le dans la catégorie tricks</div>
+    <div class="content">
+        <img class="w-50" src="https://coresites-cdn.factorymedia.com/cooler_new/wp-content/uploads/2014/05/article-0-1B3E330300000578-449_634x496.jpg" alt="">
+       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras felis neque, gravida id nisl in, fermentum varius dolor. Donec sit amet leo ut erat pulvinar tristique. In elit odio, sodales vitae pretium a, porttitor nec massa. Suspendisse consequat sed lectus vel posuere. Sed tempus cursus turpis, efficitur iaculis lorem cursus auctor. Nulla vel risus a lacus rhoncus pulvinar. Aliquam erat volutpat. Vestibulum velit enim, placerat eget elit viverra, dapibus ultrices mi. Etiam gravida pretium luctus. Integer nec tincidunt mi. Integer volutpat efficitur placerat. Aenean vulputate mi sed neque gravida ullamcorper. Nullam laoreet ligula at sodales porttitor.</p>
+        <a href="{{ path('trick_show') }}" class="btn btn-primary">lire la suite</a>
+    </div>
+</article>
+
+<article class="col-md-4 mb-sm-5">
+    <h2>title trick</h2>
+    <div class="metadata">Ecrit le dans la catégorie tricks</div>
+    <div class="content">
+        <img class="w-50" src="https://coresites-cdn.factorymedia.com/cooler_new/wp-content/uploads/2014/05/article-0-1B3E330300000578-449_634x496.jpg" alt="">
+       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras felis neque, gravida id nisl in, fermentum varius dolor. Donec sit amet leo ut erat pulvinar tristique. In elit odio, sodales vitae pretium a, porttitor nec massa. Suspendisse consequat sed lectus vel posuere. Sed tempus cursus turpis, efficitur iaculis lorem cursus auctor. Nulla vel risus a lacus rhoncus pulvinar. Aliquam erat volutpat. Vestibulum velit enim, placerat eget elit viverra, dapibus ultrices mi. Etiam gravida pretium luctus. Integer nec tincidunt mi. Integer volutpat efficitur placerat. Aenean vulputate mi sed neque gravida ullamcorper. Nullam laoreet ligula at sodales porttitor.</p>
+        <a href="{{ path('trick_show') }}" class="btn btn-primary">lire la suite</a>
+    </div>
+</article>
+
+<article class="col-md-4 mb-sm-5">
+    <h2>title trick</h2>
+    <div class="metadata">Ecrit le dans la catégorie tricks</div>
+    <div class="content">
+        <img class="w-50" src="https://coresites-cdn.factorymedia.com/cooler_new/wp-content/uploads/2014/05/article-0-1B3E330300000578-449_634x496.jpg" alt="">
+       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras felis neque, gravida id nisl in, fermentum varius dolor. Donec sit amet leo ut erat pulvinar tristique. In elit odio, sodales vitae pretium a, porttitor nec massa. Suspendisse consequat sed lectus vel posuere. Sed tempus cursus turpis, efficitur iaculis lorem cursus auctor. Nulla vel risus a lacus rhoncus pulvinar. Aliquam erat volutpat. Vestibulum velit enim, placerat eget elit viverra, dapibus ultrices mi. Etiam gravida pretium luctus. Integer nec tincidunt mi. Integer volutpat efficitur placerat. Aenean vulputate mi sed neque gravida ullamcorper. Nullam laoreet ligula at sodales porttitor.</p>
+        <a href="{{ path('trick_show') }}" class="btn btn-primary">lire la suite</a>
+    </div>
+</article>
+
+
+
+</section>
+
+</div>
+
+{% endblock %}
