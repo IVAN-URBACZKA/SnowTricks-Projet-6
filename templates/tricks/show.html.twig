@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+
+ <article class="col-md-4 mb-sm-5">
+    <h2>{{ trick.title }}</h2>
+    <div class="metadata">Ecrit le {{ trick.createdAt | date('d/m/y') }} à {{ trick.createdAt | date('h:i')}} dans la catégorie tricks</div>
+    <div class="content">
+        <img class="w-50" src="{{ trick.image }}" alt="">
+       {{ trick.description | raw }}
+    </div>
+
+   {{ trick.video | raw }}
+
+
+</article>
+
+{% endblock %}

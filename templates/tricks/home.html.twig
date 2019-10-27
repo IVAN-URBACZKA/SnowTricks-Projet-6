@@ -40,57 +40,17 @@
 
 <section class="tricks d-flex flex-row flex-wrap">
 
+     {% for trick in tricks %}
     <article class="col-md-4 mb-sm-5">
-    <h2>title trick</h2>
-    <div class="metadata">Ecrit le dans la catégorie tricks</div>
+    <h2>{{ trick.title }}</h2>
+    <div class="metadata">Ecrit le {{ trick.createdAt | date('d/m/y') }} à {{ trick.createdAt | date('h:i')}} dans la catégorie tricks</div>
     <div class="content">
-        <img class="w-50" src="https://coresites-cdn.factorymedia.com/cooler_new/wp-content/uploads/2014/05/article-0-1B3E330300000578-449_634x496.jpg" alt="">
-       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras felis neque, gravida id nisl in, fermentum varius dolor. Donec sit amet leo ut erat pulvinar tristique. In elit odio, sodales vitae pretium a, porttitor nec massa. Suspendisse consequat sed lectus vel posuere. Sed tempus cursus turpis, efficitur iaculis lorem cursus auctor. Nulla vel risus a lacus rhoncus pulvinar. Aliquam erat volutpat. Vestibulum velit enim, placerat eget elit viverra, dapibus ultrices mi. Etiam gravida pretium luctus. Integer nec tincidunt mi. Integer volutpat efficitur placerat. Aenean vulputate mi sed neque gravida ullamcorper. Nullam laoreet ligula at sodales porttitor.</p>
-        <a href="{{ path('trick_show') }}" class="btn btn-primary">lire la suite</a>
+        <img class="w-50" src="{{ trick.image }}" alt="">
+       {{ trick.description | raw }}
+        <a href="{{ path('trick_show', { id: trick.id }) }}" class="btn btn-primary">lire la suite</a>
     </div>
 </article>
-
-<article class="col-md-4 mb-sm-5">
-    <h2>title trick</h2>
-    <div class="metadata">Ecrit le dans la catégorie tricks</div>
-    <div class="content">
-        <img class="w-50" src="https://coresites-cdn.factorymedia.com/cooler_new/wp-content/uploads/2014/05/article-0-1B3E330300000578-449_634x496.jpg" alt="">
-       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras felis neque, gravida id nisl in, fermentum varius dolor. Donec sit amet leo ut erat pulvinar tristique. In elit odio, sodales vitae pretium a, porttitor nec massa. Suspendisse consequat sed lectus vel posuere. Sed tempus cursus turpis, efficitur iaculis lorem cursus auctor. Nulla vel risus a lacus rhoncus pulvinar. Aliquam erat volutpat. Vestibulum velit enim, placerat eget elit viverra, dapibus ultrices mi. Etiam gravida pretium luctus. Integer nec tincidunt mi. Integer volutpat efficitur placerat. Aenean vulputate mi sed neque gravida ullamcorper. Nullam laoreet ligula at sodales porttitor.</p>
-        <a href="{{ path('trick_show') }}" class="btn btn-primary">lire la suite</a>
-    </div>
-</article>
-
-<article class="col-md-4 mb-sm-5">
-    <h2>title trick</h2>
-    <div class="metadata">Ecrit le dans la catégorie tricks</div>
-    <div class="content">
-        <img class="w-50" src="https://coresites-cdn.factorymedia.com/cooler_new/wp-content/uploads/2014/05/article-0-1B3E330300000578-449_634x496.jpg" alt="">
-       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras felis neque, gravida id nisl in, fermentum varius dolor. Donec sit amet leo ut erat pulvinar tristique. In elit odio, sodales vitae pretium a, porttitor nec massa. Suspendisse consequat sed lectus vel posuere. Sed tempus cursus turpis, efficitur iaculis lorem cursus auctor. Nulla vel risus a lacus rhoncus pulvinar. Aliquam erat volutpat. Vestibulum velit enim, placerat eget elit viverra, dapibus ultrices mi. Etiam gravida pretium luctus. Integer nec tincidunt mi. Integer volutpat efficitur placerat. Aenean vulputate mi sed neque gravida ullamcorper. Nullam laoreet ligula at sodales porttitor.</p>
-        <a href="{{ path('trick_show') }}" class="btn btn-primary">lire la suite</a>
-    </div>
-</article>
-
-<article class="col-md-4 mb-sm-5">
-    <h2>title trick</h2>
-    <div class="metadata">Ecrit le dans la catégorie tricks</div>
-    <div class="content">
-        <img class="w-50" src="https://coresites-cdn.factorymedia.com/cooler_new/wp-content/uploads/2014/05/article-0-1B3E330300000578-449_634x496.jpg" alt="">
-       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras felis neque, gravida id nisl in, fermentum varius dolor. Donec sit amet leo ut erat pulvinar tristique. In elit odio, sodales vitae pretium a, porttitor nec massa. Suspendisse consequat sed lectus vel posuere. Sed tempus cursus turpis, efficitur iaculis lorem cursus auctor. Nulla vel risus a lacus rhoncus pulvinar. Aliquam erat volutpat. Vestibulum velit enim, placerat eget elit viverra, dapibus ultrices mi. Etiam gravida pretium luctus. Integer nec tincidunt mi. Integer volutpat efficitur placerat. Aenean vulputate mi sed neque gravida ullamcorper. Nullam laoreet ligula at sodales porttitor.</p>
-        <a href="{{ path('trick_show') }}" class="btn btn-primary">lire la suite</a>
-    </div>
-</article>
-
-<article class="col-md-4 mb-sm-5">
-    <h2>title trick</h2>
-    <div class="metadata">Ecrit le dans la catégorie tricks</div>
-    <div class="content">
-        <img class="w-50" src="https://coresites-cdn.factorymedia.com/cooler_new/wp-content/uploads/2014/05/article-0-1B3E330300000578-449_634x496.jpg" alt="">
-       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras felis neque, gravida id nisl in, fermentum varius dolor. Donec sit amet leo ut erat pulvinar tristique. In elit odio, sodales vitae pretium a, porttitor nec massa. Suspendisse consequat sed lectus vel posuere. Sed tempus cursus turpis, efficitur iaculis lorem cursus auctor. Nulla vel risus a lacus rhoncus pulvinar. Aliquam erat volutpat. Vestibulum velit enim, placerat eget elit viverra, dapibus ultrices mi. Etiam gravida pretium luctus. Integer nec tincidunt mi. Integer volutpat efficitur placerat. Aenean vulputate mi sed neque gravida ullamcorper. Nullam laoreet ligula at sodales porttitor.</p>
-        <a href="{{ path('trick_show') }}" class="btn btn-primary">lire la suite</a>
-    </div>
-</article>
-
-
+{% endfor %}
 
 </section>
 

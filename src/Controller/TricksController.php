@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Trick;
+use App\Repository\TrickRepository;
 
 class TricksController extends AbstractController
 {
@@ -14,22 +16,31 @@ class TricksController extends AbstractController
     {
         return $this->render('tricks/index.html.twig', [
             'controller_name' => 'TricksController',
+            
         ]);
     }
     
     /**
      * @Route("/", name="home")
      */
-    public function home()
+    public function home(TrickRepository $repo)
     {
-        return $this->render('tricks/home.html.twig');
+
+        $tricks = $repo->findAll();
+
+        return $this->render('tricks/home.html.twig', [
+            'tricks' => $tricks
+        ]);
     }
 
     /**
-     * @route("/tricks/12", name="trick_show")
+     * @route("/tricks/{id}", name="trick_show")
      */
-    public function show()
+    public function show(Trick $trick)
     {
-        return $this->render('tricks/home.html.twig');
+        // this function will retrieve the identifier thanks to the param convert
+        return $this->render('tricks/show.html.twig', [
+            'trick' => $trick
+        ]);
     }
 }
