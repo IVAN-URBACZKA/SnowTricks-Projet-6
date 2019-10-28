@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TrickRepository")
@@ -18,16 +20,29 @@ class Trick
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     * min=5,
+     * max=20,
+     * minMessage = "Your title must be at least {{ limit }} characters long",
+     * maxMessage = "Your title cannot be longer than {{ limit }} characters"
+     * )
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     * min=15,
+     * max=250,
+     * minMessage = "Your description must be at least {{ limit }} characters long",
+     * maxMessage = "Your description cannot be longer than {{ limit }} characters"
+     * )
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Url()
      */
     private $image;
 

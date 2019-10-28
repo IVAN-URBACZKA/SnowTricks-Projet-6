@@ -7,6 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\Trick;
+use App\Form\TrickType;
 use App\Repository\TrickRepository;
 
 class TricksController extends AbstractController
@@ -36,25 +37,34 @@ class TricksController extends AbstractController
     }
 
     /**
-     * @route("/tricks/new" , name="trick_new")
+     * @Route("/tricks/new" , name="trick_new")
+     * @Route("/tricks/{id}/edit" , name="trick_edit")
      */
-    public function create(Request $request, ObjectManager $manager)
+    public function form(Trick $trick=null,Request $request, ObjectManager $manager)
     {
          
-        $trick = new Trick();
+        if(!$trick)
+        {
+            $trick = new Trick();
+        
+        }
+        // $form = $this->createFormBuilder($trick)
+        //              ->add('title')
+        //              ->add('description')
+        //              ->add('image')
+        //              ->add('video')
+        //              ->getForm();
 
-        $form = $this->createFormBuilder($trick)
-                     ->add('title')
-                     ->add('description')
-                     ->add('image')
-                     ->add('video')
-                     ->getForm();
+        $form = $this->createForm(TrickType::class, $trick);
 
         $form = $form->handleRequest($request);
 
         if($form->isSubmitted() &&  $form->isValid())
         {
-             $trick->setCreatedAt(new \DateTime);
+            // if id of trick exist , i don't have recreate the date
+            if(!$trick->getId()){
+                $trick->setCreatedAt(new \DateTime);
+            }
              $manager->persist($trick);
              $manager->flush();
 
@@ -65,7 +75,8 @@ class TricksController extends AbstractController
         
 
         return $this->render('tricks/create.html.twig', [
-            'formTrick' => $form->createView()
+            'formTrick' => $form->createView(),
+            'edit_mode' => $trick->getId() !== null
         ]);
     }
 

@@ -46,9 +46,10 @@
     <div class="metadata">Ecrit le {{ trick.createdAt | date('d/m/y') }} à {{ trick.createdAt | date('h:i')}} dans la catégorie tricks</div>
     <div class="content">
         <img class="w-50" src="{{ trick.image }}" alt="">
+        <hr>
        {{ trick.description | raw }}
-        <a href="{{ path('trick_show', { id: trick.id }) }}" class="btn btn-primary">lire la suite</a>
     </div>
+    <a href="{{ path('trick_show', { id: trick.id }) }}" class="btn btn-primary">lire la suite</a>
 </article>
 {% endfor %}
 

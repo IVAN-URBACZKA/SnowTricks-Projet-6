@@ -5,8 +5,11 @@
 
 {% block body %}
 
+{% if edit_mode %}
+<h1>Modify a Trick</h1>
+{% else %}
 <h1>Create a Trick</h1>
-
+{% endif %}
 
 {{ form_start(formTrick) }}
 
@@ -15,8 +18,12 @@
 {{ form_row(formTrick.image, { 'attr' : {'placeholder' : 'URL Image'}}) }}
 {{ form_row(formTrick.video, { 'attr' : {'placeholder' : 'URL Video'}}) }}
 
-
+{% if edit_mode %}
+<button type="submit" class="btn btn-success">Save Changes</button>
+{% else %}
 <button type="submit" class="btn btn-success">Add Trick</button>
+{% endif %}
+
 
 {{ form_end(formTrick) }}
 
