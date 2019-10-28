@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formTrick 'bootstrap_4_layout.html.twig' %}
+
+
+{% block body %}
+
+<h1>Create a Trick</h1>
+
+
+{{ form_start(formTrick) }}
+
+{{ form_row(formTrick.title , { 'attr' : {'placeholder' : 'Title Trick'}}) }}
+{{ form_row(formTrick.description, { 'attr' : {'placeholder' : 'Title Description'}}) }}
+{{ form_row(formTrick.image, { 'attr' : {'placeholder' : 'URL Image'}}) }}
+{{ form_row(formTrick.video, { 'attr' : {'placeholder' : 'URL Video'}}) }}
+
+
+<button type="submit" class="btn btn-success">Add Trick</button>
+
+{{ form_end(formTrick) }}
+
+
+{% endblock %}

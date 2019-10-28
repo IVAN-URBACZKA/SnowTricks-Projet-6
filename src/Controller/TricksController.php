@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\Trick;
 use App\Repository\TrickRepository;
 
@@ -34,6 +36,40 @@ class TricksController extends AbstractController
     }
 
     /**
+     * @route("/tricks/new" , name="trick_new")
+     */
+    public function create(Request $request, ObjectManager $manager)
+    {
+         
+        $trick = new Trick();
+
+        $form = $this->createFormBuilder($trick)
+                     ->add('title')
+                     ->add('description')
+                     ->add('image')
+                     ->add('video')
+                     ->getForm();
+
+        $form = $form->handleRequest($request);
+
+        if($form->isSubmitted() &&  $form->isValid())
+        {
+             $trick->setCreatedAt(new \DateTime);
+             $manager->persist($trick);
+             $manager->flush();
+
+             return $this->redirectToRoute('trick_show', ['id' => $trick->getId()]);
+
+        }
+
+        
+
+        return $this->render('tricks/create.html.twig', [
+            'formTrick' => $form->createView()
+        ]);
+    }
+
+    /**
      * @route("/tricks/{id}", name="trick_show")
      */
     public function show(Trick $trick)
@@ -43,4 +79,6 @@ class TricksController extends AbstractController
             'trick' => $trick
         ]);
     }
+
+
 }
