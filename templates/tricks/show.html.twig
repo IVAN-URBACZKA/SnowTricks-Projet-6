@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+
+ <article class="col-md-4 mb-sm-5">
+    <h2>{{ trick.title }}</h2>
+    <div class="metadata">Ecrit le {{ trick.createdAt | date('d/m/y') }} à {{ trick.createdAt | date('h:i')}} dans la catégorie {{ trick.category.title }}</div>
+    <div class="content">
+        <img class="w-50" src="{{ trick.image }}" alt="">
+      </div>
+       {{ trick.description | raw }}
+
+   {{ trick.video | raw }}
+
+
+</article>
+
+<a href="{{ path('trick_edit', { id: trick.id }) }}" class="btn btn-primary">Modifier</a>
+
+<section id="commentaires">
+
+{% for comment in trick.comments %}
+
+    <div class="comment">
+    <div class="row">
+       <div class="col-3">
+       {{ comment.author }} (<small>{{ comment.createdAt | date('d/m/Y à H:i')}}</small>)
+       </div>
+     <div class="col">
+        {{  comment.content | raw }}
+ 
+     </div>
+    </div>
+    </div>
+
+    {% endfor %}
+
+</section>
+
+
+{{ form_start(formComment) }}
+
+{{ form_row(formComment.author , { 'attr' : {'placeholder' : 'author'}}) }}
+
+{{ form_row(formComment.content , { 'attr' : {'placeholder' : 'content'}}) }}
+
+
+
+<button type="submit" class="btn btn-success">Add Comment</button>
+
+
+{{ form_end(formComment) }}
+
+{% endblock %}
