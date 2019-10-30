@@ -40,4 +40,18 @@
 
 </section>
 
+
+{{ form_start(formComment) }}
+
+{{ form_row(formComment.author , { 'attr' : {'placeholder' : 'author'}}) }}
+
+{{ form_row(formComment.content , { 'attr' : {'placeholder' : 'content'}}) }}
+
+
+
+<button type="submit" class="btn btn-success">Add Comment</button>
+
+
+{{ form_end(formComment) }}
+
 {% endblock %}

@@ -7,8 +7,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\Trick;
+use App\Entity\Comment;
 use App\Form\TrickType;
+use App\Form\CommentType;
 use App\Repository\TrickRepository;
+use App\Repository\CommentRepository;
+
 
 class TricksController extends AbstractController
 {
@@ -48,13 +52,7 @@ class TricksController extends AbstractController
             $trick = new Trick();
         
         }
-        // $form = $this->createFormBuilder($trick)
-        //              ->add('title')
-        //              ->add('description')
-        //              ->add('image')
-        //              ->add('video')
-        //              ->getForm();
-
+      
         $form = $this->createForm(TrickType::class, $trick);
 
         $form = $form->handleRequest($request);
@@ -83,11 +81,24 @@ class TricksController extends AbstractController
     /**
      * @route("/tricks/{id}", name="trick_show")
      */
-    public function show(Trick $trick)
+    public function show(Trick $trick,Request $request, ObjectManager $manager)
     {
+         $comment = new Comment();
+         $form = $this->createForm(CommentType::class, $comment);
+         $form = $form->handleRequest($request);
+         if($form->isSubmitted() &&  $form->isValid())
+         {
+            $comment->setCreatedAt(new \DateTime);
+            $comment->setTrick($trick);
+            $manager->persist($comment);
+            $manager->flush();
+         }
+
         // this function will retrieve the identifier thanks to the param convert
         return $this->render('tricks/show.html.twig', [
-            'trick' => $trick
+            'trick' => $trick,
+            'formComment' => $form->createView()
+            
         ]);
     }
 
