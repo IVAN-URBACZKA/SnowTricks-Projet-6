@@ -12,7 +12,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(
  * fields = {"email"},
- * massage = "email already exist"
+ * message = "email already exist"
  * )
  */
 class User implements UserInterface

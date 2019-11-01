@@ -92,6 +92,8 @@ class TricksController extends AbstractController
             $comment->setTrick($trick);
             $manager->persist($comment);
             $manager->flush();
+            return $this->redirectToRoute('trick_show', ['id' => $trick->getId()]);
+
          }
 
         // this function will retrieve the identifier thanks to the param convert

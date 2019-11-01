@@ -22,6 +22,8 @@
 
 <section id="commentaires">
 
+<h1>{{ trick.comments | length}} Commentaires</h1>
+
 {% for comment in trick.comments %}
 
     <div class="comment">
@@ -40,7 +42,7 @@
 
 </section>
 
-
+{% if app.user %}
 {{ form_start(formComment) }}
 
 {{ form_row(formComment.author , { 'attr' : {'placeholder' : 'author'}}) }}
@@ -53,5 +55,13 @@
 
 
 {{ form_end(formComment) }}
+
+{% else %}
+
+<h2>You must be logged in to comment</h2>
+
+<a href="{{path('security_login')}}" class="btn btn-primary">Login</a>
+
+{% endif %}
 
 {% endblock %}
