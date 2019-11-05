@@ -78,6 +78,18 @@ class TricksController extends AbstractController
         ]);
     }
 
+
+    /**
+     * @Route("/tricks/{id}/delete" , name="trick_delete")
+     */
+    public function deleteTrick(Trick $trick,Request $request, ObjectManager $manager, TrickRepository $repo)
+    {
+        $manager->remove($trick);
+        $manager->flush();
+        return $this->redirectToRoute('home');
+        
+    }
+
     /**
      * @route("/tricks/{id}", name="trick_show")
      */
