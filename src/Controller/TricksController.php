@@ -8,10 +8,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\Trick;
 use App\Entity\Comment;
+use App\Entity\User;
 use App\Form\TrickType;
 use App\Form\CommentType;
 use App\Repository\TrickRepository;
 use App\Repository\CommentRepository;
+use App\Repository\UserRepository;
+use Symfony\Component\Security\Core\User\UserInterface;
+
+
 
 
 class TricksController extends AbstractController
@@ -35,8 +40,10 @@ class TricksController extends AbstractController
 
         $tricks = $repo->findAll();
 
+
         return $this->render('tricks/home.html.twig', [
             'tricks' => $tricks
+            
         ]);
     }
 
@@ -93,7 +100,7 @@ class TricksController extends AbstractController
     /**
      * @route("/tricks/{id}", name="trick_show")
      */
-    public function show(Trick $trick,Request $request, ObjectManager $manager)
+    public function show(Trick $trick,Request $request, ObjectManager $manager,UserInterface $user)
     {
          $comment = new Comment();
          $form = $this->createForm(CommentType::class, $comment);
@@ -101,6 +108,7 @@ class TricksController extends AbstractController
          if($form->isSubmitted() &&  $form->isValid())
          {
             $comment->setCreatedAt(new \DateTime);
+            $comment->setUserId($user);
             $comment->setTrick($trick);
             $manager->persist($comment);
             $manager->flush();
