@@ -49,7 +49,17 @@
         <hr>
        {{ trick.description | raw }}
     </div>
-    <a href="{{ path('trick_show', { id: trick.id }) }}" class="btn btn-primary">lire la suite</a>
+    <a href="{{ path('trick_show', { id: trick.id }) }}" class="btn btn-link">lire la suite</a>
+
+    {% if app.user %}
+
+    <a href="{{ path('trick_edit', { id: trick.id }) }}" class="btn btn-info"><i class="fas fa-pen"></i></a>
+
+<a href="{{ path('trick_delete', { id: trick.id }) }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+
+    {% endif %}
+
+
 </article>
 {% endfor %}
 
