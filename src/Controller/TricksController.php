@@ -70,8 +70,13 @@ class TricksController extends AbstractController
             if(!$trick->getId()){
                 $trick->setCreatedAt(new \DateTime);
             }
+
              $manager->persist($trick);
              $manager->flush();
+             $this->addFlash(
+                'notice',
+                'Your Trick is added to the database'
+            );
 
              return $this->redirectToRoute('trick_show', ['id' => $trick->getId()]);
 
@@ -100,7 +105,7 @@ class TricksController extends AbstractController
     /**
      * @route("/tricks/{id}", name="trick_show")
      */
-    public function show(Trick $trick,Request $request, ObjectManager $manager,UserInterface $user)
+    public function show(Trick $trick,Request $request, ObjectManager $manager,UserInterface $user = null)
     {
          $comment = new Comment();
          $form = $this->createForm(CommentType::class, $comment);

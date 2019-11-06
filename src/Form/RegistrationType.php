@@ -7,6 +7,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+
+
 
 class RegistrationType extends AbstractType
 {
@@ -17,7 +21,12 @@ class RegistrationType extends AbstractType
             ->add('username')
             ->add('password', PasswordType::class)
             ->add('confirm_password', PasswordType::class)
+            ->add('picture', FileType::class, [
+                'label' => 'picture'
+
+                ])
         ;
+        
     }
 
     public function configureOptions(OptionsResolver $resolver)

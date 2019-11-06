@@ -26,6 +26,8 @@
     <div class="comment">
     <div class="row">
        <div class="col-3">
+      <img class="w-25" src="{{ asset('img/' ~ comment.userId.picture)}}" alt="">
+
        {{ comment.userId.username }} (<small>{{ comment.createdAt | date('d/m/Y à H:i')}}</small>)
        </div>
      <div class="col">
@@ -60,4 +62,13 @@
 
 {% endif %}
 
+{# read and display just one flash message type #}
+{% for message in app.flashes('notice') %}
+<br>
+   <div class="alert alert-dismissible alert-success">
+  <strong>Well done!</strong><a href="#" class="alert-link">{{message}}</a>.
+</div>
+{% endfor %}
+
 {% endblock %}
+
