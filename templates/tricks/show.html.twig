@@ -4,8 +4,7 @@
 
 {% block body %}
 
-
- <article class="col-md-4 mb-sm-5">
+<article class="col-md-4 mb-sm-5">
     <h2>{{ trick.title }}</h2>
     <div class="metadata">Ecrit le {{ trick.createdAt | date('d/m/y') }} à {{ trick.createdAt | date('h:i')}} dans la catégorie {{ trick.category.title }}</div>
     <div class="content">
@@ -18,16 +17,18 @@
 
 </article>
 
-<a href="{{ path('trick_edit', { id: trick.id }) }}" class="btn btn-primary">Modifier</a>
-
 <section id="commentaires">
+
+<h1>{{ trick.comments | length}} Commentaires</h1>
 
 {% for comment in trick.comments %}
 
     <div class="comment">
     <div class="row">
        <div class="col-3">
-       {{ comment.author }} (<small>{{ comment.createdAt | date('d/m/Y à H:i')}}</small>)
+      <img class="w-25" src="{{ asset('img/' ~ comment.userId.picture)}}" alt="">
+
+       {{ comment.userId.username }} (<small>{{ comment.createdAt | date('d/m/Y à H:i')}}</small>)
        </div>
      <div class="col">
         {{  comment.content | raw }}
@@ -40,10 +41,9 @@
 
 </section>
 
-
+{% if app.user %}
 {{ form_start(formComment) }}
 
-{{ form_row(formComment.author , { 'attr' : {'placeholder' : 'author'}}) }}
 
 {{ form_row(formComment.content , { 'attr' : {'placeholder' : 'content'}}) }}
 
@@ -54,4 +54,21 @@
 
 {{ form_end(formComment) }}
 
+{% else %}
+
+<h2>You must be logged in to comment</h2>
+
+<a href="{{path('security_login')}}" class="btn btn-primary">Login</a>
+
+{% endif %}
+
+{# read and display just one flash message type #}
+{% for message in app.flashes('notice') %}
+<br>
+   <div class="alert alert-dismissible alert-success">
+  <strong>Well done!</strong><a href="#" class="alert-link">{{message}}</a>.
+</div>
+{% endfor %}
+
 {% endblock %}
+
