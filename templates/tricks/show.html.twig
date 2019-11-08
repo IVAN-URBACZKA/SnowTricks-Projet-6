@@ -8,7 +8,7 @@
     <h2>{{ trick.title }}</h2>
     <div class="metadata">Ecrit le {{ trick.createdAt | date('d/m/y') }} à {{ trick.createdAt | date('h:i')}} dans la catégorie {{ trick.category.title }}</div>
     <div class="content">
-        <img class="w-50" src="{{ trick.image }}" alt="">
+        <img class="w-50" src="{{ asset('img/' ~ trick.image)}}" alt="">
       </div>
        {{ trick.description | raw }}
 
@@ -21,9 +21,8 @@
 
 <h1>{{ trick.comments | length}} Commentaires</h1>
 
-{% for comment in trick.comments %}
-
-    <div class="comment">
+  {% for comment in comments %}
+         <div class="comment">
     <div class="row">
        <div class="col-3">
       <img class="w-25" src="{{ asset('img/' ~ comment.userId.picture)}}" alt="">
@@ -36,8 +35,8 @@
      </div>
     </div>
     </div>
-
     {% endfor %}
+    {{ knp_pagination_render(comments) }}
 
 </section>
 
