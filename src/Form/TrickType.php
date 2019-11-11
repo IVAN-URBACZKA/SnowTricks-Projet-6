@@ -23,7 +23,8 @@ class TrickType extends AbstractType
             ])
             ->add('description')
             ->add('image' ,FileType::class, [
-                'label' => 'picture'
+                'label' => 'picture',
+                'data_class' => null
 
                 ])
             ->add('video')

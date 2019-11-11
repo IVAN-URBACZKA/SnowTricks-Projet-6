@@ -72,7 +72,6 @@ class TricksController extends AbstractController
 
         if($form->isSubmitted() &&  $form->isValid())
         {
-            // if id of trick exist , i don't have recreate the date
             if(!$trick->getId()){
                 $trick->setCreatedAt(new \DateTime);
                 
@@ -83,12 +82,25 @@ class TricksController extends AbstractController
           // moves the file to the directory where brochures are stored
           $file->move(
             $this->getParameter('image'),
-            $fileName
+            $fileName 
         );
 
 
          $trick->setImage($fileName);
             }
+
+            $file = $form->get('image')->getData();
+
+            $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+   
+             // moves the file to the directory where brochures are stored
+             $file->move(
+               $this->getParameter('image'),
+               $fileName 
+           );
+   
+   
+            $trick->setImage($fileName);
 
              $manager->persist($trick);
              $manager->flush();
