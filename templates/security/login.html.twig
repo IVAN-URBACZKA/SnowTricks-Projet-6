@@ -2,7 +2,9 @@
 
 {% block body %}
 
-<h1>Login</h1>
+<h1 class="text-center mt-5">Login</h1>
+
+<div class="d-flex justify-content-center mt-5">
 
 <form action="{{ path('security_login') }}" method="post">
 
@@ -26,5 +28,7 @@
 
 
 </form>
+
+</div>
 
 {% endblock %}

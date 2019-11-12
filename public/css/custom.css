@@ -1,0 +1,61 @@
+.jumbotron {
+    margin:0;
+    padding:0;
+    background: url("https://www.tactics.com/a/bdg5/r/snowboard-main.jpg") no-repeat center fixed;
+    -webkit-background-size: cover; /* pour Chrome et Safari */
+    -moz-background-size: cover; /* pour Firefox */
+    -o-background-size: cover; /* pour Opera */
+    background-size: cover; /* version standardisée */
+    height: 60vh;
+  }
+
+article {
+ 
+    display: none;
+}
+#loadmore {
+    margin: 5px auto;
+    padding: 8px 0;
+    width: 50%;
+    background: #c12b2b;
+    text-align: center;
+    color: #fff;
+    display: block;
+    text-decoration: none;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+.p {
+    margin: 5px auto;
+    padding: 8px 0;
+    width: 50%;
+    background: #333;
+    text-align: center;
+    color: #fff;
+    display: block;
+    text-decoration: none;
+}
+#loadmore:hover {
+    background: #333;
+}
+#top a {
+    color: #c12b2b;
+    position: fixed;
+    bottom: 5px;
+    right: 15px;
+    text-decoration: none;
+    display: none;
+}
+
+h1,h2,h3,h4,h5,h6
+{
+    font-family: 'Lobster', cursive;
+
+}
+
+p,a{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
