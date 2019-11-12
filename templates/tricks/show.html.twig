@@ -1,9 +1,6 @@
 {% extends 'base.html.twig' %}
 
-
-
 {% block body %}
-
 
 <div class="d-flex flex-column align-items-center mt-2">
     <div class="content">
@@ -12,15 +9,13 @@
 
 
    {% if app.user %}
-
-    
+ 
  <div class="card-body">
 
  <a  href="{{ path('trick_edit', { id: trick.id }) }}" class="btn btn-info"><i class="fas fa-pen"></i></a>
 
 <a href="{{ path('trick_delete', { id: trick.id }) }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
 
-  
 </div>
 
     {% endif %}
@@ -33,12 +28,7 @@
 
         {{ trick.video | raw }}
 
-
-
-
 </div>
-
-
 
 <section id="commentaires">
 
@@ -54,7 +44,6 @@
 
       </div>
 
-
        </div>
     </div>
     
@@ -66,13 +55,9 @@
 {% if app.user %}
 {{ form_start(formComment) }}
 
-
 {{ form_row(formComment.content , { 'attr' : {'placeholder' : 'content'}}) }}
 
-
-
 <button type="submit" class="btn btn-success">Add Comment</button>
-
 
 {{ form_end(formComment) }}
 
