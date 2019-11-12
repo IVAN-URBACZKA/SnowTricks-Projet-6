@@ -8,9 +8,9 @@
   <!-- Main jumbotron for a primary marketing message or call to action -->
   <div class="jumbotron">
     <div class="container">
-      <h1 id="title-home" class="display-3 text-white text-center ">SNOWTRICKS</h1>
-      <h2 class="text-white text-center ">ALWAYS HIGHER</h2>
-      <p id="down" class="text-center mt-3"><a id="down" class="btn btn-primary btn-lg " href="#down" role="button"><i  class="fas fa-arrow-down fa-3x"></i>
+      <h1 id="title-home" class="display-3 text-white text-center">SNOWTRICKS</h1>
+      <h2 class="text-white text-center  mt-5 ">ALWAYS HIGHER</h2>
+      <p id="down" class="text-center mt-5"><a id="down" class="btn btn-primary btn-lg " href="#down" role="button"><i  class="fas fa-arrow-down fa-3x"></i>
 </a></p>
     </div>
   </div>
@@ -27,7 +27,7 @@
 
 
      {% for trick in tricks %}
-    <article  class="col-3 mt-3">
+    <article  class="col-md-3 mt-3">
    <div class="card">
   <img src="{{ asset('img/' ~ trick.image)}}" class="card-img-top" alt="...">
   <div class="card-body">
