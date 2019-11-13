@@ -5,20 +5,22 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Trick;
 use App\Entity\Comment;
+use App\Entity\Category;
 use App\Form\TrickType;
 use App\Form\CommentType;
 use App\Repository\UserRepository;
 use App\Repository\TrickRepository;
 use App\Repository\CommentRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Knp\Component\Pager\PaginatorInterface; 
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Knp\Component\Pager\PaginatorInterface; 
 
 
 
@@ -152,12 +154,17 @@ class TricksController extends AbstractController
     /**
      * @route("/tricks/{id}", name="trick_show")
      */
-    public function show(Trick $trick,Request $request, ObjectManager $manager,UserInterface $user = null, CommentRepository $repo, PaginatorInterface $paginator)
+    public function show(Trick $trick,Request $request, ObjectManager $manager,UserInterface $user = null,CommentRepository $repo,CategoryRepository $cat_repo,PaginatorInterface $paginator)
     {
          $comment = new Comment();
          $form = $this->createForm(CommentType::class, $comment);
          $commententaires = $trick->getComments();
+         $id_cat = $trick->getCategory();
+         
+         $associatetricks = $cat_repo->find($id_cat);
 
+         $associatetricks = $associatetricks->getTricks();
+         
 
          $comments = $paginator->paginate(
             $commententaires, // Requête contenant les données à paginer (ici nos articles)
@@ -181,7 +188,8 @@ class TricksController extends AbstractController
         return $this->render('tricks/show.html.twig', [
             'trick' => $trick,
             'formComment' => $form->createView(),
-            'comments' => $comments
+            'comments' => $comments,
+            'associatetricks' => $associatetricks
             
         ]);
     }

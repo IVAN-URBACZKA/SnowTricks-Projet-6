@@ -4,7 +4,7 @@
 
 <div class="d-flex flex-column align-items-center mt-2">
     <div class="content">
-        <img class="w-100" src="{{ asset('img/' ~ trick.image)}}" alt="">
+        <img class="w-100 mb-5" src="{{ asset('img/' ~ trick.image)}}" alt="">
       </div>
 
 
@@ -20,14 +20,61 @@
 
     {% endif %}
 
-    <h1>{{ trick.title }}</h1>
+    <h1 class="bg-info text-white p-2">{{ trick.title }}</h1>
 
-    <div class="metadata"><h3>Ecrit le {{ trick.createdAt | date('d/m/y') }} à {{ trick.createdAt | date('h:i')}} dans la Catégorie {{ trick.category.title }}</h3></div>
+    <div class="metadata"><em>Ecrit le {{ trick.createdAt | date('d/m/y') }} à {{ trick.createdAt | date('h:i')}} dans la Catégorie {{ trick.category.title }}</em></div>
 
-     <p>{{ trick.description | raw }}</p>
+     <h3 class="mt-2 mb-5"> Description: {{ trick.description | raw }}</h3>
 
-        {{ trick.video | raw }}
+     <div>
 
+     <h3 class="text-center bg-primary text-white">Tricks video</h3>
+
+      {{ trick.video | raw }}
+
+     
+     </div>
+
+
+</div>
+
+
+
+<h2 class="text-center mt-5 mb-5 bg-secondary text-white">Associate tricks</h2>
+
+
+<div class="container">
+<div class="row">
+
+{% for associatetrick in associatetricks %}
+
+{# <div class="d-flex ">
+
+<p>{{  associatetrick.title }}</p>
+
+
+</div> #}
+
+ <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="{{ asset('img/' ~ associatetrick.image)}}" alt="Card image cap">
+
+                <div class="card-body">
+                  <p class="card-text">{{  associatetrick.title }}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{{ path('trick_show', { id: associatetrick.id }) }}" class="btn btn-link">View</a></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+    {% endfor %}
+
+</div>
 </div>
 
 <section id="commentaires">
