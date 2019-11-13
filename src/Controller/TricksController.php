@@ -89,6 +89,9 @@ class TricksController extends AbstractController
          $trick->setImage($fileName);
             }
 
+            else{
+
+                
             $file = $form->get('image')->getData();
 
             $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
@@ -101,6 +104,9 @@ class TricksController extends AbstractController
    
    
             $trick->setImage($fileName);
+            
+            }
+
 
              $manager->persist($trick);
              $manager->flush();
