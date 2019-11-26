@@ -3,3 +3,22 @@
 
 # Codacy
 https://app.codacy.com/manual/IVAN-URBACZKA/snowTricks/dashboard
+
+# Download or clone the repository git
+
+https://github.com/IVAN-URBACZKA/snowTricks
+
+2 - Download dependencies :
+
+composer install
+
+3 - Create database :
+
+php bin/console doctrine:database:create
+
+4 - Create schema :
+
+php bin/console doctrine:schema:update --force
+
+5 - Load fixtures :
+php bin/console doctrine:fixtures:load
