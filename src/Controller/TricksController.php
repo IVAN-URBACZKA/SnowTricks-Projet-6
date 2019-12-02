@@ -5,8 +5,8 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Trick;
 use App\Entity\Comment;
-use App\Entity\Category;
 use App\Form\TrickType;
+use App\Entity\Category;
 use App\Form\CommentType;
 use App\Repository\UserRepository;
 use App\Repository\TrickRepository;
@@ -20,6 +20,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
@@ -58,6 +59,7 @@ class TricksController extends AbstractController
     /**
      * @Route("/tricks/new" , name="trick_new")
      * @Route("/tricks/{id}/edit" , name="trick_edit")
+     * @IsGranted("ROLE_USER")
      */
     public function form(Trick $trick=null,Request $request, ObjectManager $manager)
     {
@@ -142,6 +144,7 @@ class TricksController extends AbstractController
 
     /**
      * @Route("/tricks/{id}/delete" , name="trick_delete")
+     * @IsGranted("ROLE_USER")
      */
     public function deleteTrick(Trick $trick,Request $request, ObjectManager $manager, TrickRepository $repo)
     {
